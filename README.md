@@ -1,17 +1,10 @@
 # [Logseq](https://logseq.com) task completion tracker plugin
 
-* Logseq plugin for tracking when task was done. 
-* Useful for gathering weekly\monthly\whatever report.
-* Look for "Task Completion" in the Marketplace.
+Original extension by DimitryDushkin with description [here](https://github.com/DimitryDushkin/logseq-plugin-task-check-date).
 
-## Features
-* Adds property "completed" to tasks upon checking
-* Adds slash command `Completed tasks for the past week` which queries blocks with `completed` property equal one of 7 past days.
+In this fork, just the date format for the 'completed' property has been changed to a plain text 'yyyyMMdd', as Logseq currently does not handle properties with programmatically inserted links correctly.
 
-![demo](demo2.png)
-
-## Note
-Query looks a bit ugly since I didn't find any other option to query block's property dates. Looks like it's not possible for now. Opened a ticket — https://github.com/logseq/logseq/issues/7083
+You can use the date in plain text format 'yyyyMMdd' in queries, comparing it with :today and other built-in variables.
 
 ## How to release
 1. `yarn build`

@@ -1,6 +1,7 @@
 import "@logseq/libs";
 import dayjs from "dayjs";
 import { getDateForPage } from "logseq-dateutils";
+import { getDateForPageWithoutBrackets } from "logseq-dateutils";
 
 const TASK_MARKERS = new Set(["DONE", "NOW", "LATER", "DOING", "TODO", "WAITING"]);
 
@@ -18,10 +19,10 @@ function main() {
         return;
       }
 
-      const userConfigs = await logseq.App.getUserConfigs();
-      let preferredDateFormat = userConfigs.preferredDateFormat;
-      preferredDateFormat = preferredDateFormat.replace(/E{1,3}/, "EEE");//handle same E, EE, or EEE bug
-      const datePage = getDateForPage(new Date(), preferredDateFormat);
+      let dateFormat = 'yyyyMMdd';
+      dateFormat = dateFormat.replace(/E{1,3}/, "EEE");//handle same E, EE, or EEE bug
+      const today = new Date();
+      const datePage = getDateForPageWithoutBrackets(today, dateFormat);
 
       logseq.Editor.upsertBlockProperty(taskBlock.uuid, "completed", datePage);
     } else {
